@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head> 
+  <meta charset="UTF-8">
+  <title>Дискография — Король и Шут</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url("gorshok.webp"); /* Используем фото на фоне */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #F5F5F5; /* Белый цвет для текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65); /* Полупрозрачный черный фильтр для темной темы */
+      z-index: -1;
+    }
+
+    body.light-theme {
+      background-color: #1c1c1c;
+      color: #D3D3D3; /* Легкий серый для светлой темы */
+      background-image: url("background-light_dark.jpg"); /* Фон для светлой темы */
+    }
+
+    body.light-theme::before {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(255, 69, 0, 0.25); /* Темно-оранжевый для ссылок */
+      color: #FF4500; /* Оранжево-красный цвет */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #FF4500;
+      border-radius: 25px;
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    }
+
+    .menu a:hover {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FF4500;
+      text-shadow: 0 0 10px #FF4500, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #FF4500, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #FF6347, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон для контента */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      animation: fadeInUp 1s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #FF4500;
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .image-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-block img {
+      width: 80%;
+      max-width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.05);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #FF4500;
+      width: 60%;
+      margin: 30px auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #FF4500;
+    }
+
+    th {
+      background-color: #FF4500;
+      color: white;
+    }
+
+    td {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+    }
+
+    .album-info {
+      font-size: 14px;
+      color: #D3D3D3;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexd.html">Главная</a>
+    <a href="Infod.html">Общая информация</a>
+    <a href="Historyd.html">История</a>
+    <a href="Filmd.html">Фильмография</a>
+    <a href="Discod.html" class="active">Дискография</a>
+    <a href="Linksd.html">Источники</a>
+    <a href="Shopd.html">Заказать</a>
+    <a href="Contactd.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Дискография группы "Король и Шут"</h1>
+    <p><strong>Король и Шут</strong> — группа, чья дискография является важнейшей частью истории русского рок-движения. С момента своего образования в 1988 году группа выпустила более 10 студийных альбомов, которые оказали огромное влияние на развитие отечественной рок-музыки.</p>
+
+    <h2>Дискография группы "Король и Шут"</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Год</th>
+          <th>Альбом</th>
+          <th>Жанр</th>
+          <th>Популярные песни</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1995</td>
+          <td>Король и Шут</td>
+          <td>Панк-рок, Оккультный рок</td>
+          <td>"Кукла колдуна", "Лесник"</td>
+          <td>Дебютный альбом, в котором группа утвердила свой уникальный стиль с мистическими текстами и панковскими ритмами.</td>
+        </tr>
+        <tr>
+          <td>2000</td>
+          <td>Шарики</td>
+          <td>Панк-рок, Хардкор</td>
+          <td>"Шарики", "Зловещий Клоун"</td>
+          <td>Альбом, который сделал группу культовой в российском роке. В нем сочетаются панковская агрессия с элементами театральности.</td>
+        </tr>
+        <tr>
+          <td>2003</td>
+          <td>Погоня</td>
+          <td>Панк-рок, Готика</td>
+          <td>"Погоня", "Судьба"</td>
+          <td>Группа продолжает развивать свою уникальную тему с мрачными текстами и театрализованным подходом к музыке.</td>
+        </tr>
+        <tr>
+          <td>2005</td>
+          <td>На крыльях смерти</td>
+          <td>Панк-рок, Мистический рок</td>
+          <td>"На крыльях смерти", "Палата №6"</td>
+          <td>Этот альбом стал знаковым для группы. В нем присутствуют более зрелые музыкальные и текстовые решения.</td>
+        </tr>
+        <tr>
+          <td>2008</td>
+          <td>Кто, если не мы?</td>
+          <td>Панк-рок, Альтернатива</td>
+          <td>"Кто, если не мы?", "Палата №6"</td>
+          <td>Альбом, в котором группа экспериментирует с более разнообразными музыкальными стилями и лирикой.</td>
+        </tr>
+        <tr>
+          <td>2010</td>
+          <td>Как в старой сказке</td>
+          <td>Панк-рок, Фолк</td>
+          <td>"Как в старой сказке", "Герой"</td>
+          <td>Смешение фолка и панка, с множеством сюрреалистичных и фэнтезийных текстов.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Интересные факты о дискографии</h2>
+    <ul>
+      <li>Группа выпустила более 10 студийных альбомов, которые разошлись тиражом более 5 миллионов копий.</li>
+      <li>Их альбомы в основном стали платиновыми или золотыми в России.</li>
+      <li>Многие из песен группы были использованы в фильмах, сериалах и рекламных роликах, что свидетельствует о культовости их музыки.</li>
+      <li>Их альбомы отличались не только музыкой, но и уникальной визуальной эстетикой, которая часто включала готические, мистические и фэнтезийные элементы.</li>
+    </ul>
+
+    <h2>Последние альбомы и их влияние</h2>
+    <p>После смерти Михаила Горшенёва (Горшка) группа продолжила выпускать новые альбомы, которые пользовались большим интересом среди фанатов. Однако, смерть основного автора песен оставила незаполненную дыру, и группа продолжала существовать как трибьют и культовый феномен.</p>
+
+    <div class="image-block">
+      <img src="korol_i_shut_discography.jpg" alt="Дискография группы Король и Шут">
+    </div>
+  </div>
+</body>
+</html>

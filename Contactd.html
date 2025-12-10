@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Контакты — Король и Шут</title>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    // Инициализация EmailJS с вашим user_id
+    (function () {
+      emailjs.init("user_YOUR_USER_ID"); // Замените на ваш реальный user_id из EmailJS
+    })();
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url("gorshok.webp"); /* Используем фото на фоне */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #F5F5F5; /* Белый цвет для текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65); /* Полупрозрачный черный фильтр для темной темы */
+      z-index: -1;
+    }
+
+    body.light-theme {
+      background-color: #1c1c1c;
+      color: #D3D3D3; /* Легкий серый для светлой темы */
+      background-image: url("background-light_dark.jpg"); /* Фон для светлой темы */
+    }
+
+    body.light-theme::before {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(255, 69, 0, 0.25); /* Темно-оранжевый для ссылок */
+      color: #FF4500; /* Оранжево-красный цвет */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #FF4500;
+      border-radius: 25px;
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    }
+
+    .menu a:hover {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FF4500;
+      text-shadow: 0 0 10px #FF4500, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #FF4500, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #FF6347, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон для контента */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      animation: fadeInUp 1s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #FF4500;
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .contact-info h2 {
+      color: #FF4500;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      color: #FFF;
+      margin-bottom: 10px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #FF4500;
+      background-color: #1c1c1c;
+      color: #FFF;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      padding: 12px;
+      background-color: #FF4500;
+      border: none;
+      border-radius: 5px;
+      color: #FFF;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #FF6347;
+    }
+
+    .image-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-block img {
+      width: 80%;
+      max-width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.05);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #FF4500;
+      width: 60%;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexd.html">Главная</a>
+    <a href="Infod.html">Общая информация</a>
+    <a href="Historyd.html">История</a>
+    <a href="Filmd.html">Фильмография</a>
+    <a href="Discod.html">Дискография</a>
+    <a href="Linksd.html">Источники</a>
+    <a href="Shopd.html">Заказать</a>
+    <a href="Contactd.html" class="active">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Контакты</h1>
+    <p>Заполните форму ниже, и мы обязательно свяжемся с вами.</p>
+
+    <div class="contact-info">
+      <h2>Наши контактные данные</h2>
+      <p><strong>Email:</strong> <a href="mailto:croissnoir@gmail.com">croissnoir@gmail.com</a></p>
+      <p><strong>Телефон:</strong> +7 999 123 45 67</p>
+      <p><strong>Адрес:</strong> Москва, ул. Примерная, д. 10</p>
+    </div>
+
+    <hr>
+
+    <h2>Напишите нам</h2>
+    <p>Заполните форму ниже, и мы обязательно свяжемся с вами.</p>
+
+    <div class="contact-form">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <input type="email" id="email" placeholder="Ваш email" required>
+      <textarea id="message" placeholder="Ваше сообщение" rows="5" required></textarea>
+      <button type="button" onclick="sendEmail()">Отправить сообщение</button> <!-- изменено на type="button" -->
+    </div>
+
+    <div class="image-block">
+      <img src="contacts_image.jpg" alt="Король и Шут — Контакты">
+    </div>
+
+  </div>
+
+  <script>
+    function sendEmail() {
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+
+      var templateParams = {
+        from_name: name,
+        from_email: email,
+        message: message
+      };
+
+      emailjs.send('service_88wdntm', 'template_wows6yp', templateParams)
+        .then(function(response) {
+           alert('Сообщение отправлено! Спасибо за ваше письмо.');
+        }, function(error) {
+           console.error('Ошибка отправки сообщения:', error);
+           alert('Произошла ошибка, попробуйте еще раз.');
+        });
+    }
+  </script>
+
+</body>
+</html>

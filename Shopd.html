@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head> 
+  <meta charset="UTF-8">
+  <title>Магазин — Король и Шут</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url("gorshok.webp"); /* Используем фото на фоне */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #F5F5F5; /* Белый цвет для текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65); /* Полупрозрачный черный фильтр для темной темы */
+      z-index: -1;
+    }
+
+    body.light-theme {
+      background-color: #1c1c1c;
+      color: #D3D3D3; /* Легкий серый для светлой темы */
+      background-image: url("background-light_dark.jpg"); /* Фон для светлой темы */
+    }
+
+    body.light-theme::before {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(255, 69, 0, 0.25); /* Темно-оранжевый для ссылок */
+      color: #FF4500; /* Оранжево-красный цвет */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #FF4500;
+      border-radius: 25px;
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    }
+
+    .menu a:hover {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FF4500;
+      text-shadow: 0 0 10px #FF4500, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #FF4500, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #FF6347, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон для контента */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      animation: fadeInUp 1s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #FF4500;
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      width: 250px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card img {
+      max-width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+    }
+
+    .product-card h3 {
+      color: #FF4500;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .product-card p {
+      color: #FFF;
+      font-size: 16px;
+    }
+
+    .product-card .price {
+      color: #FFD700;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .add-to-cart-btn {
+      background-color: #FF4500;
+      color: #FFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #FF6347;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #FF4500;
+      width: 60%;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexd.html">Главная</a>
+    <a href="Infod.html">Общая информация</a>
+    <a href="Historyd.html">История</a>
+    <a href="Filmd.html">Фильмография</a>
+    <a href="Discod.html">Дискография</a>
+    <a href="Linksd.html">Источники</a>
+    <a href="Shopd.html" class="active">Заказать</a>
+    <a href="Contactd.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Магазин "Король и Шут"</h1>
+    <p>Добро пожаловать в наш магазин! Здесь вы можете приобрести эксклюзивные товары с символикой группы "Король и Шут". В нашем ассортименте — футболки, постеры, виниловые пластинки и другие уникальные товары, которые порадуют настоящих поклонников группы.</p>
+
+    <div class="card-container">
+      <div class="product-card">
+        <img src="tshirt_kingandshut.jpg" alt="Футболка Король и Шут">
+        <h3>Футболка "Король и Шут"</h3>
+        <p>Стильная футболка с логотипом группы, доступна в разных размерах.</p>
+        <div class="price">1 200 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+
+      <div class="product-card">
+        <img src="vinyl_kingandshut.jpg" alt="Виниловая пластинка">
+        <h3>Виниловая пластинка "Король и Шут"</h3>
+        <p>Легендарный альбом группы на виниле, идеально подходит для коллекционеров.</p>
+        <div class="price">2 500 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+
+      <div class="product-card">
+        <img src="poster_kingandshut.jpg" alt="Постер Король и Шут">
+        <h3>Постер "Король и Шут"</h3>
+        <p>Красочный постер с изображением группы, который станет отличным украшением для вашего интерьера.</p>
+        <div class="price">600 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+
+      <div class="product-card">
+        <img src="mug_kingandshut.jpg" alt="Кружка Король и Шут">
+        <h3>Кружка "Король и Шут"</h3>
+        <p>Кружка с логотипом группы, идеальный подарок для поклонников.</p>
+        <div class="price">350 ₽</div>
+        <button class="add-to-cart-btn">Добавить в корзину</button>
+      </div>
+    </div>
+
+    <hr>
+    <p>Все товары эксклюзивны и выпущены ограниченным тиражом. Не упустите шанс приобрести свою частичку истории группы "Король и Шут"!</p>
+  </div>
+
+  <script>
+    // 🌙 Переключение темы
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      themeToggle.textContent = document.body.classList.contains("light-theme") ? "☀️" : "🌙";
+    });
+
+    // 📩 Контактное окно
+    const contactBtn = document.getElementById("contactBtn");
+    const contactModal = document.getElementById("contactModal");
+    const closeContact = document.querySelector(".close-contact");
+
+    contactBtn.onclick = () => contactModal.style.display = "block";
+    closeContact.onclick = () => contactModal.style.display = "none";
+    window.onclick = (e) => { if (e.target === contactModal) contactModal.style.display = "none"; };
+  </script>
+</body>
+</html>

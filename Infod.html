@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head> 
+  <meta charset="UTF-8">
+  <title>Общая информация — Король и Шут</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url("gorshok.webp"); /* Используем фото на фоне */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: #F5F5F5; /* Белый цвет для текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65); /* Полупрозрачный черный фильтр для темной темы */
+      z-index: -1;
+    }
+
+    body.light-theme {
+      background-color: #1c1c1c;
+      color: #D3D3D3; /* Легкий серый для светлой темы */
+      background-image: url("background-light_dark.jpg"); /* Фон для светлой темы */
+    }
+
+    body.light-theme::before {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(255, 69, 0, 0.25); /* Темно-оранжевый для ссылок */
+      color: #FF4500; /* Оранжево-красный цвет */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #FF4500;
+      border-radius: 25px;
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    }
+
+    .menu a:hover {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #FF4500;
+      color: #FFF;
+      box-shadow: 0 0 15px #FF4500;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FF4500;
+      text-shadow: 0 0 10px #FF4500, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #FF4500, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #FF6347, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон для контента */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      animation: fadeInUp 1s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #FF4500;
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .image-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-block img {
+      width: 80%;
+      max-width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.05);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #FF4500;
+      width: 60%;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexd.html">Главная</a>
+    <a href="Infod.html" class="active">Общая информация</a>
+    <a href="Historyd.html">История</a>
+    <a href="Filmd.html">Фильмография</a>
+    <a href="Discod.html">Дискография</a>
+    <a href="Linksd.html">Источники</a>
+    <a href="Shopd.html">Заказать</a>
+    <a href="Contactd.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Король и Шут — Легенда русского панк-рока</h1>
+    <p><strong>Король и Шут</strong> — российская панк-группа, основанная в 1988 году в Санкт-Петербурге. Своим стилем и музыкой они стали культовой группой не только среди любителей панка, но и среди поклонников рока в целом.</p>
+
+    <p>Группа была известна своими яркими, театрализованными шоу, которые сочетали в себе элементы театра и рок-концертов. Их тексты часто затрагивали мракобесие, фэнтези, страшилки и сюжеты из популярных книг и фильмов. Вдохновленные работами таких авторов, как Эдгар Аллан По и Гоголь, они создали уникальный мир, полный мифов и вымышленных персонажей.</p>
+
+    <div class="quote">«В их песнях смерть — это лишь переход в другую реальность»</div>
+
+    <h2>Интересные факты о группе:</h2>
+    <ul>
+      <li>Группа была основана в Санкт-Петербурге в 1988 году и почти сразу же стала популярной среди молодежи.</li>
+      <li>Наибольший успех группе принес альбом «Король и Шут», который стал золотым в России.</li>
+      <li>Сергей Горшенёв (Горшок), лидер группы, был не только вокалистом, но и автором большинства текстов. Он стал культовой фигурой в русской рок-музыке.</li>
+      <li>Группа всегда отличалась необычным сценическим имиджем — они часто использовали театральные элементы, маски и костюмы на сцене.</li>
+      <li>Михаил Горшенёв, основатель группы, ушел из жизни в 2013 году, оставив после себя огромное наследие в русском роке.</li>
+      <li>После его смерти поклонники группы продолжили создавать фан-клубы и устраивать трибьют-концерты.</li>
+    </ul>
+
+    <h2>Знаменитые песни группы:</h2>
+    <ul>
+      <li>«Кукла колдуна»</li>
+      <li>«Марш новых игрушек»</li>
+      <li>«Лесник»</li>
+      <li>«Танцы на крыше»</li>
+      <li>«Погоня»</li>
+    </ul>
+
+    <h2>История группы</h2>
+    <p>«Король и Шут» был основан в конце 80-х годов как группа, исполняющая панк-рок. С самого начала они привлекли внимание своим театрализованным подходом к музыке, где песни сочетались с элементами мюзиклов и театра. Лидером группы был Сергей Горшенёв (Горшок), который стал основным автором песен и вдохновением для всех поклонников.</p>
+
+    <div class="image-block">
+      <img src="korol_i_shut_history.jpg" alt="История группы Король и Шут">
+    </div>
+
+    <p>Группа развивалась и становилась популярной, и их альбомы становились золотыми и платиновыми. В их песнях звучали мрачные, но увлекательные истории, что делало их не только музыкальными, но и театральными. Многие из песен группы были посвящены фольклору, страшным историям и мистическим персонажам.</p>
+  </div>
+
+  <script>
+    // 🌙 Переключение темы
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      themeToggle.textContent = document.body.classList.contains("light-theme") ? "☀️" : "🌙";
+    });
+
+    // 📩 Контактное окно
+    const contactBtn = document.getElementById("contactBtn");
+    const contactModal = document.getElementById("contactModal");
+    const closeContact = document.querySelector(".close-contact");
+
+    contactBtn.onclick = () => contactModal.style.display = "block";
+    closeContact.onclick = () => contactModal.style.display = "none";
+    window.onclick = (e) => { if (e.target === contactModal) contactModal.style.display = "none"; };
+  </script>
+</body>
+</html>
